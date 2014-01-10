@@ -1,3 +1,6 @@
+<html>
+<!--Fait par Nicolas Rivault-->
+<!--Dernieres modification : 14/10/2013 -->
 <?php
 	//Fait par Thomas David Tous droits réservés
 	session_start();
@@ -36,3 +39,4 @@
 <?php
 	}
 ?>
+</html>

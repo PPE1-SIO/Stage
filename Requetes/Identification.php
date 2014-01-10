@@ -1,3 +1,7 @@
+
+<html>
+<!--Fait par Nicolas Rivault-->
+<!--Dernieres modification : 02/12/2013 -->
 <?php
 
 	session_start();
@@ -15,7 +19,7 @@
 	$sqlEleve = $connexion->query($reqEleve);
 	$ligneEleve = $sqlEleve->fetch();
 
-	$reqProfesseur = "SELECT NOMPROF, MOTPASSE FROM professeur WHERE NOMPROF='$Pseudo' AND MOTPASSE='$MotDePasseMD5'";
+	$reqProfesseur = "SELECT NOMPROF, MOTPASSE FROM professeur WHERE MELPROF='$Pseudo' AND MOTPASSE='$MotDePasseMD5'";
 	$sqlProfesseur = $connexion->query($reqProfesseur);	
 	$ligneProfesseur = $sqlProfesseur->fetch();
 	
@@ -50,3 +54,4 @@
 	// Fermeture de la connexion à MySql
 	exit;		
 ?>
+</html>

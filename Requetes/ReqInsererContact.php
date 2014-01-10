@@ -1,4 +1,7 @@
-ï»¿<?php
+ï»¿<html>
+<!--Fait par Nicolas Rivault-->
+<!--Dernieres modification : 02/12/2013 -->
+<?php
 	session_start();
 	
 	//Appel de la page de connexion à la base de données MySql
@@ -30,3 +33,4 @@
 	<?php	
 	}
 ?>
+</html>

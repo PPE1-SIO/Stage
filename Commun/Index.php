@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 
 <html>
+<!--Fait par -->
+<!--Dernieres modification : 30/09/2013 -->
+
+
 	<head>
 		<title>Accueil</title>
 		<link rel="stylesheet"  href="../CSS/Style.css" />

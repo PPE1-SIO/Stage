@@ -1,9 +1,10 @@
 <html>
-<!--Fait par Thomas David Tous droits réservés-->
+<!--Fait par Pierrick Chevessier-->
+<!--Dernieres modification : 02/12/2013 -->
 	<?php
-		session_start();
-		
+		session_start(); 
 		include ("../Requetes/Connexion.php");
+		
 		
 		//Appel de la page d'en tête
 		include ("../Commun/EnTete.php");
@@ -11,44 +12,29 @@
 	
 	<div id="BarreSousMenu"><center>Mes Recherches</center></div>
 	<body>	
-	
-	<?php	
-		//Appel de la page du menu de gauche
-		include ("MenuGauche.php");
-	?>
-	
 	<div id="corps">
 	<br/>		
 	
 	<?php
-		$NumEtudiant = $_SESSION['noetud'];
+		$NumEtudiant = $PseudoEleve['NOETUD'];
 	
 		// Requête 		
-		$req = "SELECT NOMENT, REPENT, QUALITEREP, ADRUEENT, CPENT, VILLEENT, TELENT, ACTENT, LIBELLEETAT, DATEDEMANDE, NUMDEMANDE
-		FROM entreprise, etudiant, demande, etat
-		WHERE entreprise.NOENT=demande.NOENT
-		AND demande.NOETUD=etudiant.NOETUD
-		AND etat.NUMETAT=demande.NUMETAT
-		AND demande.NOETUD ='$NumEtudiant'
-		ORDER BY DATEDEMANDE";
-		
-		
+		$req = "SELECT * FROM DEMANDE WHERE NOETUD='$NumEtudiant'";
 		
 	?>
 	
 	<table class="affichage">
 	<thead>
-	<tr><th>Nom de l'entreprise</th>
-	<th>Représentant</th>
-	<th>Qualité</th>
-	<th>Adresse</th>
-	<th>Code Postal</th>
-	<th>Ville</th>
-	<th>Téléphone</th>
-	<th>Activité</th>
-	<th>Etat</th>
-	<th>Date de la demande</th>
-	<th>Nombre de relances</th>
+	<tr><th>Numéro de Demande</th>
+	<th>Numéro entreprise</th>
+	<th>Numéro étudiant</th>
+	<th>Num état</th>
+	<th>Date Demande</th>
+	<th>Nom du contact</th>
+	<th>Numéro de l'état </th>
+	<th>Nombre de relance</th>
+	<th>Date dernière relance</th>
+
 	</tr></thead>
 	
 	<?php	
@@ -57,7 +43,7 @@
 		$ligne = $sql->fetch();
 		$DateDemande = $ligne['DATEDEMANDE'];
 		$Date = date('d-m-Y',strtotime($DateDemande));		
-
+		
 		//Boucle qui permet d'afficher ligne par ligne une entreprise séléctionnée
 	?>
 	<tbody>
@@ -67,18 +53,22 @@
 		$reqNbRelance = "SELECT count(NUMDEMANDE) AS NombreRelance FROM relance WHERE NUMDEMANDE='$ligneRelance'";
 		$sqlNbRelance = $connexion->query($reqNbRelance);
 		$ligneNbRelance = $sqlNbRelance->fetch();
+		
+		$req1 = "SELECT MAX(DATERELANCE) AS derniereDate FROM relance WHERE NUMDEMANDE='$ligneRelance'";
+		$sql1 = $connexion->query($req1);
+		$DateRelance = $sql1->fetch();
+
+
 	?>			
-			<tr class="gris"><td class="gris"><?php echo $ligne['NOMENT']; ?></td>
-			<td class="gris"><?php echo $ligne['REPENT']; ?></td>
-			<td class="gris"><?php echo $ligne['QUALITEREP']; ?></td>
-			<td class="gris"><?php echo $ligne['ADRUEENT']; ?></td>
-			<td class="gris"><?php echo $ligne['CPENT']; ?></td>
-			<td class="gris"><?php echo $ligne['VILLEENT']; ?></td>
-			<td class="gris"><?php echo $ligne['TELENT']; ?></td>
-			<td class="gris"><?php echo $ligne['ACTENT']; ?></td>
-			<td class="gris"><?php echo $ligne['LIBELLEETAT']; ?></td>
-			<td class="gris"><?php echo $Date; ?></td>
-			<td class="gris"><?php echo $ligneNbRelance['NombreRelance']; ?></td></tr>
+			<tr class="gris"><td class="gris"><?php echo $ligne['NUMDEMANDE']; ?></td>
+			<td class="gris"><?php echo $ligne['NOENT']; ?></td>
+			<td class="gris"><?php echo $ligne['NOETUD']; ?></td>
+			<td class="gris"><?php echo $ligne['NUMETAT']; ?></td>
+			<td class="gris"><?php echo $ligne['DATEDEMANDE']; ?></td>
+			<td class="gris"><?php echo $ligne['NOMPERSCONTACTEE']; ?></td>
+			<td class="gris"><?php echo $ligne['NUMMODE']; ?></td>
+			<td class="gris"><?php echo $ligneNbRelance['NombreRelance']; ?></td>
+			<td class="gris"><?php echo $DateRelance['derniereDate']; ?></td></tr>
 			<?php $ligne = $sql->fetch(); ?>
 			
 	<?php		

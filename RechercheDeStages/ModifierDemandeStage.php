@@ -1,5 +1,6 @@
 <html>
-<!--Fait par Thomas David Tous droits réservés-->
+<!--Fait par Nicolas Rivault-->
+<!--Dernieres modification : 30/09/2013 -->
 	<?php
 		session_start();
 

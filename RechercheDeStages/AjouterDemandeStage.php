@@ -1,5 +1,6 @@
 ﻿<html>
-<!--Fait par Thomas David Tous droits r�serv�s-->
+<!--Fait par Nicolas Rivault,Ronan Leger-->
+<!--Dernieres modification : 02/12/2013 -->
 	<?php		
 		session_start();
 
@@ -17,7 +18,7 @@
 	<form method="post" action="../Requetes/ReqDemandeStage.php" onsubmit="return verifFonctionsDemandeStage(this)">	
 	<table class="tb1">
 	<tr>
-	<td>Nom de l'entreprise :</td> 
+	<td>Nom de l'entreprise :</td>
 	<?php		
 		//Pr�paration de la requ�te qui permet d'afficher le nom des entreprises
 		$sql = "SELECT NOENT, NOMENT 
@@ -72,7 +73,7 @@
 		}
 	?>
 			
-	</select>*	
+	</select>*
 	</option>
 	</td>
         <td><FONT size="2pt">* Champs obligatoires</FONT></td>
@@ -84,7 +85,6 @@
 		<td>
 		<form method="post" action="../Requetes/ReqInsererContact.php" >
 			<td>autre mode de contact :<input type="text" name="txtNom" class="champ" />*</td>
-			<td><input class="boutton2" type="submit" name="submit" value="Enregistrer" /></td>
 		</form>	
 	</table>
 	</td>	

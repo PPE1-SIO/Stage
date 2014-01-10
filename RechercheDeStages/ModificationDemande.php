@@ -1,5 +1,6 @@
 <html>
-<!--Ronan Leger-->
+<!--Fait par Ronan Leger-->
+<!--Dernieres modification : 30/09/2013 -->
 	<?php		
 		session_start();
 

@@ -1,4 +1,6 @@
-<!--nicolas 23/09-->
+<html>
+<!--Fait par Nicolas Rivault-->
+<!--Dernieres modification : 23/09/2013 -->
 <?php
 session_start();
 include('../Requetes/Connexion.php');//ouverture de la connexion
@@ -37,3 +39,4 @@ VALUES('$numEtud', '$noEtud', '$noEnt', '$tuteur', '$cr', '$adS', '$villeS', '$c
 $sql = $connexion->exec($req);
 header("Location: ../SuiviDeStages/RechercheStage.php");
 ?>
+</html>

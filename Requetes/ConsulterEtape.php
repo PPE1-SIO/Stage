@@ -1,5 +1,6 @@
-﻿<!--Pierrick 30/09/13-->
-<html>
+﻿<html>
+<!--Fait par Pierrick Chevessier-->
+<!--Dernieres modification : 30/09/2013 -->
 	<?php
 		session_start();
 		
